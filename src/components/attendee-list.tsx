@@ -1,4 +1,11 @@
-import { Search } from "lucide-react";
+import {
+  Search,
+  MoreHorizontal,
+  ChevronsLeft,
+  ChevronLeft,
+  ChevronsRight,
+  ChevronRight,
+} from "lucide-react";
 
 export function AttendeeList() {
   return (
@@ -14,48 +21,94 @@ export function AttendeeList() {
         </div>
       </div>
       <div className="border border-white/10 rounded-lg">
-      <table className="w-full">
-        <thead>
-          <tr className="border-b border-white/10">
-            <th className="py-3 px-4 font-semibold text-sm">
-              <input type="checkbox" />
-            </th>
-            <th className="py-3 px-4 font-semibold text-sm text-left">Código</th>
-            <th className="py-3 px-4 font-semibold text-sm text-left">Participantes</th>
-            <th className="py-3 px-4 font-semibold text-sm text-left">Data de inscrição</th>
-            <th className="py-3 px-4 font-semibold text-sm text-left">Data do check-in </th>
-            <th className="py-3 px-4 font-semibold text-sm text-left"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="border-b border-white/10">
-            <td className="py-3 px-4 text-sm text-zinc-300">
-              <input type="checkbox" />
-            </td>
-            <td className="py-3 px-4 text-sm text-zinc-300">551099</td>
-            <td className="py-3 px-4 text-sm text-zinc-300">
-                <div className="flex flex-col gap-1">
-                    <span className="font-semibold text-white">Igor Nunes Teixeira</span>
-                    <span>igornteixeira48@hotmail.com</span>
-                </div>
-            </td>
-            <td className="py-3 px-4 text-sm text-zinc-300">7 dias atrás</td>
-            <td className="py-3 px-4 text-sm text-zinc-300">3 dias atrás</td>
-            <td className="py-3 px-4 text-sm text-zinc-300"></td>
-          </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td className="py-3 px-4 text-sm text-zinc-300" colSpan={3}>
-                    Mostrando 10 de 228 itens 
-                </td>
-                <td className="py-3 px-4 text-sm text-zinc-300 text-right" colSpan={3}>
-                    Página 1 de 23
-                </td>
+        <table className="w-full">
+          <thead>
+            <tr className="border-b border-white/10">
+              <th
+                style={{ width: 48 }}
+                className="py-3 px-4 font-semibold text-sm text-left"
+              >
+                <input type="checkbox" />
+              </th>
+              <th className="py-3 px-4 font-semibold text-sm text-left">
+                Código
+              </th>
+              <th className="py-3 px-4 font-semibold text-sm text-left">
+                Participantes
+              </th>
+              <th className="py-3 px-4 font-semibold text-sm text-left">
+                Data de inscrição
+              </th>
+              <th className="py-3 px-4 font-semibold text-sm text-left">
+                Data do check-in{" "}
+              </th>
+              <th
+                style={{ width: 64 }}
+                className="py-3 px-4 font-semibold text-sm text-left"
+              ></th>
             </tr>
-        </tfoot>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {Array.from({ length: 8 }).map((_, i) => {
+              return (
+                <tr key={i} className="border-b border-white/10">
+                  <td className="py-3 px-4 text-sm text-zinc-300">
+                    <input type="checkbox" />
+                  </td>
+                  <td className="py-3 px-4 text-sm text-zinc-300">551099</td>
+                  <td className="py-3 px-4 text-sm text-zinc-300">
+                    <div className="flex flex-col gap-1">
+                      <span className="font-semibold text-white">
+                        Igor Nunes Teixeira
+                      </span>
+                      <span>igornteixeira48@hotmail.com</span>
+                    </div>
+                  </td>
+                  <td className="py-3 px-4 text-sm text-zinc-300">
+                    7 dias atrás
+                  </td>
+                  <td className="py-3 px-4 text-sm text-zinc-300">
+                    3 dias atrás
+                  </td>
+                  <td className="py-3 px-4 text-sm text-zinc-300"></td>
+                  <button className="bg-black/10 border border-white/10 rounded-md p-1.6">
+                    <MoreHorizontal className="size-4" />
+                  </button>
+                </tr>
+              );
+            })}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td className="py-3 px-4 text-sm text-zinc-300" colSpan={3}>
+                Mostrando 10 de 228 itens
+              </td>
+              <td
+                className="py-3 px-4 text-sm text-zinc-300 text-right"
+                colSpan={3}
+              >
+                <div className="inline-flex items-center gap-8">
+                  <span>Página 1 de 23</span>
+                  <div className="flex gap-1.5">
+                    <button className="bg-black/20 border border-white/10 rounded-md p-1.5">
+                      <ChevronsLeft className="size-4" />
+                    </button>
+                    <button className="bg-black/10 border border-white/10 rounded-md p-1.5">
+                      <ChevronLeft className="size-4" />
+                    </button>
+                    <button className="bg-black/10 border border-white/10 rounded-md p-1.5">
+                      <ChevronRight className="size-4" />
+                    </button>
+                    <button className="bg-black/10 border border-white/10 rounded-md p-1.5">
+                      <ChevronsRight className="size-4" />
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
     </div>
   );
 }
