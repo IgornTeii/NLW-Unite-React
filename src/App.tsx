@@ -1,21 +1,11 @@
-interface MyButtonProps{
-    texto: string
-}
-
-
-function MyButton(props: MyButtonProps){
-    return<button className="bg-cyan-500 h-10 px-3 rounded font-bold">{props.texto}</button>
-}
+import { AttendeeList } from "./components/attendee-list";
+import { Header } from "./components/header";
 
 export function App() {
-return(
-    <div className="flex gap-3 ">
-    <MyButton texto="FODA"></MyButton>
-    <MyButton texto="LINDO"></MyButton>
-    <MyButton texto="ANIMAL"></MyButton>
-    <MyButton texto="ROCKETSEAT"></MyButton>
-    <MyButton texto="FODA"></MyButton>
-    <MyButton texto="FODA"></MyButton>
+  return (
+    <div className="max-w-[1216px] mx-auto py-5 flex flex-col gap-5">
+      <Header />
+      <AttendeeList />
     </div>
-)
+  );
 }
