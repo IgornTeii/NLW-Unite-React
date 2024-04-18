@@ -82,9 +82,9 @@ export function AttendeeList() {
                     3 dias atrás
                   </td>
                   <td className="py-3 px-4 text-sm text-zinc-300">
-                    <button className="bg-black/20 border border-white/10 rounded-md p-1.5">
+                    <IconButton transparent>
                       <MoreHorizontal className="size-4" />
-                    </button>
+                    </IconButton>
                   </td>
                 </tr>
               );
