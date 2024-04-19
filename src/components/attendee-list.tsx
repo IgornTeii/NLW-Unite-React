@@ -9,6 +9,8 @@ import {
 import { IconButton } from "./icon-button";
 import { Table } from "./table/table";
 import { TableHeader } from "./table/table-header";
+import { TableCell } from "./table/table-cell";
+import { TableRow } from "./table/table-row";
 
 export function AttendeeList() {
   return (
@@ -55,43 +57,43 @@ export function AttendeeList() {
         <tbody>
           {Array.from({ length: 8 }).map((_, i) => {
             return (
-              <tr key={i} className="border-b border-white/10 hover:bg-white/5">
-                <td className="py-3 px-4 text-sm text-zinc-300">
+              <TableRow key={i}>
+                <TableCell className="py-3 px-4 text-sm text-zinc-300">
                   <input
                     type="checkbox"
                     className="size-4 bg-black/20 rounded border border-white/10"
                   />
-                </td>
-                <td className="py-3 px-4 text-sm text-zinc-300">551099</td>
-                <td className="py-3 px-4 text-sm text-zinc-300">
+                </TableCell>
+                <TableCell className="py-3 px-4 text-sm text-zinc-300">551099</TableCell>
+                <TableCell className="py-3 px-4 text-sm text-zinc-300">
                   <div className="flex flex-col gap-1">
                     <span className="font-semibold text-white">
                       Igor Nunes Teixeira
                     </span>
                     <span>igornteixeira48@hotmail.com</span>
                   </div>
-                </td>
-                <td className="py-3 px-4 text-sm text-zinc-300">
+                </TableCell>
+                <TableCell className="py-3 px-4 text-sm text-zinc-300">
                   7 dias atrás
-                </td>
-                <td className="py-3 px-4 text-sm text-zinc-300">
+                </TableCell>
+                <TableCell className="py-3 px-4 text-sm text-zinc-300">
                   3 dias atrás
-                </td>
-                <td className="py-3 px-4 text-sm text-zinc-300">
+                </TableCell>
+                <TableCell className="py-3 px-4 text-sm text-zinc-300">
                   <IconButton transparent>
                     <MoreHorizontal className="size-4" />
                   </IconButton>
-                </td>
-              </tr>
+                </TableCell>
+              </TableRow>
             );
           })}
         </tbody>
         <tfoot>
           <tr>
-            <td className="py-3 px-4 text-sm text-zinc-300" colSpan={3}>
+            <TableCell className="py-3 px-4 text-sm text-zinc-300" colSpan={3}>
               Mostrando 10 de 228 itens
-            </td>
-            <td
+            </TableCell>
+            <TableCell
               className="py-3 px-4 text-sm text-zinc-300 text-right"
               colSpan={3}
             >
@@ -112,7 +114,7 @@ export function AttendeeList() {
                   </IconButton>
                 </div>
               </div>
-            </td>
+            </TableCell>
           </tr>
         </tfoot>
       </Table>
