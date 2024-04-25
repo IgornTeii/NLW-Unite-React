@@ -115,7 +115,7 @@ export function AttendeeList() {
               <div className="inline-flex items-center gap-8">
                 <span>Página {page} de {totalPages}</span>
                 <div className="flex gap-1.5">
-                  <IconButton onClick={goToLastPage} disabled={page == 1}>
+                  <IconButton onClick={goToFirstPage} disabled={page == 1}>
                     <ChevronsLeft className="size-4" />
                   </IconButton>
                   <IconButton onClick={goToPreviousPage} disabled={page == 1}>
@@ -124,7 +124,7 @@ export function AttendeeList() {
                   <IconButton onClick={goToNextPage} disabled={page == totalPages}>
                     <ChevronRight className="size-4" />
                   </IconButton>
-                  <IconButton onClick={goToFirstPage} disabled={page == totalPages}>
+                  <IconButton onClick={goToLastPage} disabled={page == totalPages}>
                     <ChevronsRight className="size-4" />
                   </IconButton>
                 </div>
