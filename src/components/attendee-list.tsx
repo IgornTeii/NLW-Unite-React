@@ -52,7 +52,7 @@ export function AttendeeList() {
             <TableHeader
               style={{ width: 64 }}
             ></TableHeader>
-          </tr>
+          </tr>  
         </thead>
         <tbody>
           {Array.from({ length: 8 }).map((_, i) => {
