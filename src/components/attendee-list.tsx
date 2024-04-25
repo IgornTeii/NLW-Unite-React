@@ -6,8 +6,9 @@ import {
   ChevronsRight,
   ChevronRight,
 } from "lucide-react";
-import { formatRelative } from "date-fns";
-import { ptBR } from "date-fns/locale";
+import dayjs from "dayjs";
+import 'dayjs/locale/pt-br'
+import relativeTime from "dayjs/plugin/relativeTime";
 import { IconButton } from "./icon-button";
 import { Table } from "./table/table";
 import { TableHeader } from "./table/table-header";
@@ -16,11 +17,33 @@ import { TableRow } from "./table/table-row";
 import { ChangeEvent, useState } from "react";
 import { attendees } from "../data/attendees";
 
+dayjs.extend(relativeTime)
+dayjs.locale('pt-br')
+
 export function AttendeeList() {
   const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1)
+
+  const totalPages = Math.ceil(attendees.length / 10)
 
   function onSearchImputChange(event: ChangeEvent<HTMLInputElement>) {
     setSearch(event.target.value);
+  }
+
+  function goToNextPage (){
+    setPage(page + 1)
+  }
+
+  function goToPreviousPage () {
+    setPage (page - 1)
+  }
+  
+  function goToLastPage () {
+    setPage(totalPages)
+  }
+
+  function goToFirstPage () {
+    setPage(1)
   }
 
   return (
@@ -56,7 +79,7 @@ export function AttendeeList() {
           </tr>
         </thead>
         <tbody>
-          {attendees.map((attendees) => {
+          {attendees.slice((page -1) * 10, page * 10).map((attendees) => {
             return (
               <TableRow key={attendees.id}>
                 <TableCell>
@@ -74,8 +97,8 @@ export function AttendeeList() {
                     <span>{attendees.email}</span>
                   </div>
                 </TableCell>
-                <TableCell>{formatRelative(attendees.createdAt, new Date(), {locale: ptBR})}</TableCell>
-                <TableCell>{formatRelative(attendees.createdInAt, new Date(), {locale: ptBR})}</TableCell>
+                <TableCell>{dayjs().to(attendees.createdAt)}</TableCell>
+                <TableCell>{dayjs().to(attendees.createdInAt)}</TableCell>
                 <TableCell>
                   <IconButton transparent>
                     <MoreHorizontal className="size-4" />
@@ -87,21 +110,21 @@ export function AttendeeList() {
         </tbody>
         <tfoot>
           <tr>
-            <TableCell colSpan={3}>Mostrando 10 de 228 itens</TableCell>
+            <TableCell colSpan={3}>Mostrando 10 de {attendees.length}</TableCell>
             <TableCell className="text-right" colSpan={3}>
               <div className="inline-flex items-center gap-8">
-                <span>Página 1 de 23</span>
+                <span>Página {page} de {totalPages}</span>
                 <div className="flex gap-1.5">
-                  <IconButton>
+                  <IconButton onClick={goToLastPage} disabled={page == 1}>
                     <ChevronsLeft className="size-4" />
                   </IconButton>
-                  <IconButton>
+                  <IconButton onClick={goToPreviousPage} disabled={page == 1}>
                     <ChevronLeft className="size-4" />
                   </IconButton>
-                  <IconButton>
+                  <IconButton onClick={goToNextPage} disabled={page == totalPages}>
                     <ChevronRight className="size-4" />
                   </IconButton>
-                  <IconButton>
+                  <IconButton onClick={goToFirstPage} disabled={page == totalPages}>
                     <ChevronsRight className="size-4" />
                   </IconButton>
                 </div>
